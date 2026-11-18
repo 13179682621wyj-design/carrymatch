@@ -110,6 +110,29 @@ The Supabase **publishable key** in the frontend is a client-side identifier, no
 
 The uploaded frontend is labeled **V3.10 — Persistent message tabs**. This iteration keeps Chat and Contact Requests tabs visible and returns users to the inbox after viewing chat details. The supplied release note indicates no database migration was required for this frontend update.
 
+## Development & deployment / 开发与部署环境
+
+CarryMatch uses three separate services:
+
+| Service | Purpose | Reference |
+| --- | --- | --- |
+| GitHub | Source control and documentation | This repository |
+| Cloudflare Workers | Frontend hosting and production deployment | Worker service: `carrymatch` |
+| Supabase | PostgreSQL, anonymous authentication, RLS and RPC | Supabase project ref: `lfqvvopwjwhhbwwfhems` |
+
+**Public production demo:** https://carrymatch.13179682621wyj-863.workers.dev/
+
+### Deployment notes / 部署说明
+
+1. The current frontend is a static `index.html` with an accompanying `hero.jpg`.
+2. Deploy both files together as Cloudflare Worker static assets; check that the image path `./hero.jpg` resolves.
+3. The browser connects to the existing Supabase project using a publishable client key. Keep service-role keys, database passwords and privileged tokens out of source control.
+4. Database tables, RLS policies and RPC functions are managed separately in Supabase; they are not recreated merely by deploying this repository.
+5. After deployment, test anonymous sign-in, two-sided posting, route matching, contact acceptance and two-user chat using separate browser sessions.
+6. Verify backend authorization before inviting real users. This repository does not establish that the production database has passed a security audit.
+
+**Maintainer note:** Private management URLs for the Cloudflare account and individual Supabase SQL editor snippets are intentionally omitted from this public README. Store them in a private project note or password manager, not in the repository.
+
 ## 07 · What I learned / 项目反思
 
 The most meaningful part of CarryMatch was not building another website. It was learning to convert a messy, real-world behavior into a product system: identifying two-sided needs, defining structured inputs, designing privacy-conscious interactions, and translating business rules into database queries and a working interface.
