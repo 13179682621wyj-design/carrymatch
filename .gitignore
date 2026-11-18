@@ -1,0 +1,19 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+.DS_Store
+node_modules/
+dist/
+.tmp/
+.cache/
+# Never commit database exports or private test data
+*.dump
+*.sql.gz
+private/
+secrets/
