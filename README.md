@@ -133,6 +133,17 @@ CarryMatch uses three separate services:
 
 **Maintainer note:** Private management URLs for the Cloudflare account and individual Supabase SQL editor snippets are intentionally omitted from this public README. Store them in a private project note or password manager, not in the repository.
 
+## Engineering documentation / 工程文档
+
+- [System architecture / 系统架构](docs/architecture.md)
+- [Database contract and RLS/RPC review checklist / 数据库接口与权限核查](docs/database-architecture.md)
+- [Matching logic and acceptance cases / 匹配逻辑与验收场景](docs/matching-logic.md)
+- [Deployment and rollback runbook / 部署与回滚](docs/deployment.md)
+- [Test plan / 测试计划](docs/testing.md)
+- [Changelog / 版本记录](CHANGELOG.md)
+
+**Verification boundary:** These documents are based on the committed frontend and project notes. Actual Supabase SQL policies, function definitions and Cloudflare deployment configuration have not been independently inspected. Security checklist items and tests marked unverified are not completed audits.
+
 ## 07 · What I learned / 项目反思
 
 The most meaningful part of CarryMatch was not building another website. It was learning to convert a messy, real-world behavior into a product system: identifying two-sided needs, defining structured inputs, designing privacy-conscious interactions, and translating business rules into database queries and a working interface.
